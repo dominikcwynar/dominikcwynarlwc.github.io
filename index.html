@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body>
+<form id="form" ">
+  <input id="searchTerm" type="text" name="searchTerm"/>
+  <input type="submit" />
+</form>
+ 
+<div id="lightningout" data-lightning-out="true"></div>
+ 
+<script src="https://oneops-mbm--pocpega.sandbox.my.salesforce-sites.com/cos/lightning/lightning.out.js"></script>
+<script type="text/javascript">
+  const appName = 'c:LightningOutDependencyApp';
+  const componentName = 'c:searchComp';
+  const lightningEndpoint = 'https://oneops-mbm--pocpega.sandbox.my.salesforce-sites.com/cos';
+  const targetElement = document.querySelector("[data-lightning-out]");
+    $Lightning.use(
+        'c:LightningOutDependencyApp', // name of the Lightning app
+        function(){
+         $Lightning.createComponent(
+          'c:searchComp',
+           {
+             "nameToSearch" : 'test'
+            },
+          targetElement,
+          function (cmp){
+           console.log('lightning component created');
+            console.log(cmp);
+          }
+          );
+        },
+         lightningEndpoint// Site endpoint
+      );
+
+</script>
+</body>
+</html>
