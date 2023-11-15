@@ -14,6 +14,7 @@
 <script src="https://oneops-mbm--pocpega.sandbox.my.salesforce-sites.com/cos/lightning/lightning.out.js"></script>
 <script>
       var eFunction = function(event){
+            console.log(event);
         var myEventData1 = event.getParam("myEventData1");
         var myEventData2 = event.getParam("myEventData2");
         alert('Selected App: ' + myEventData1);
