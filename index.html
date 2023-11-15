@@ -10,14 +10,14 @@
   <input type="submit" />
 </form>
  
-<div id="lightningout" data-lightning-out="true"></div>
+<div id="lightningout"></div>
  
 <script src="https://141123poc-dev-ed.develop.lightning.force.com/lightning/lightning.out.js"></script>
 <script type="text/javascript">
   const appName = 'c:FS_COSSearchResults';
   const componentName = 'c:FS_COSSearchResults';
   const lightningEndpoint = 'https://141123poc-dev-ed.develop.my.site.com/';
-  const targetElement = document.querySelector("[data-lightning-out]");
+  const targetElement = 'lightningout';
 
   $Lightning.use(
     appName,
