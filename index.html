@@ -5,34 +5,49 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 </head>
 <body>
-<form id="form" ">
-  <input id="searchTerm" type="text" name="searchTerm"/>
-  <input type="submit" />
+<form>
+<label for="fname">Last name:</label>
+<input type="text" id="lname" name="lname"><br><br>
+<input type="button" onclick="getOptions()" value="Search Credit Apps">
 </form>
- 
 <div id="lightningout"></div>
- 
-<script src="https://oneops-mbm--pocpega.sandbox.lightning.force.com/lightning/lightning.out.js"></script>
-<script type="text/javascript">
-  const appName = 'c:LightningOutDependencyApp';
-  const componentName = 'c:searchComp';
-  const lightningEndpoint = 'https://oneops-mbm--pocpega.sandbox.my.salesforce-sites.com/cos';
-  const targetElement = 'lightningout';
-
-  $Lightning.use(
-    appName,
-    function(){
-      $Lightning.createComponent(
-        componentName,
-        {},
-        targetElement,
-        function(cmp){
-          console.log('component created');
+<script src="https://oneops-mbm--pocpega.sandbox.my.salesforce-sites.com/cos/lightning/lightning.out.js"></script>
+<script>
+      var eFunction = function(event){
+        var myEventData1 = event.getParam("myEventData1");
+        var myEventData2 = event.getParam("myEventData2");
+        alert('Selected App: ' + myEventData1);
+        alert('Selected Dealer: ' + myEventData2);
+        document.getElementById("content").innerHTML = "Selected App: " + myEventData1 + "<br />Dealer Number: " + myEventData2 +"<br />";
+      };
+      var x = 'test';
+      function getOptions() {
+        x = document.getElementById("lname").value;
+        if(x===null || x==='')
+          alert('Please enter a Last Name');
+        else {
+         console.log(x);
+         document.getElementById("lightningout").innerHTML = "";
+        $Lightning.use(
+            'c:LightningOutDependencyApp', // name of the Lightning app
+            function () {
+              // Callback once framework and app loaded
+              $Lightning.createComponent(
+                'c:searchComp', // top-level component of your app
+                {
+                 "nameToSearch": x
+                }, // attributes to set on the component when created
+                'lightningout', // the DOM location to insert the component
+                function (cmp) {
+                  $A.eventService.addHandler({ "event": "c:MyApplicationEvent", "handler" : eFunction});
+                }
+              );
+            },
+            'https://oneops-mbm--pocpega.sandbox.my.salesforce-sites.com/cos'
+          );
         }
-      );
-    },
-    lightningEndpoint
-  );
+      }
 </script>
+<div id='content'></div>
 </body>
 </html>
