@@ -12,30 +12,27 @@
  
 <div id="lightningout" data-lightning-out="true"></div>
  
-<script src="https://oneops-mbm--pocpega.sandbox.my.salesforce-sites.com/cos/lightning/lightning.out.js"></script>
+<script src="	https://oneops-mbm--devdocw.sandbox.my.site.com/cos/lightning/lightning.out.js"></script>
 <script type="text/javascript">
-  const appName = 'c:LightningOutDependencyApp';
-  const componentName = 'c:searchComp';
-  const lightningEndpoint = 'https://oneops-mbm--pocpega.sandbox.my.salesforce-sites.com/cos';
+  const appName = 'c:FS_COSSearchResults';
+  const componentName = 'c:FS_COSSearchResults';
+  const lightningEndpoint = 'https://oneops-mbm--devdocw.sandbox.my.site.com/cos';
   const targetElement = document.querySelector("[data-lightning-out]");
-    $Lightning.use(
-        'c:LightningOutDependencyApp', // name of the Lightning app
-        function(){
-         $Lightning.createComponent(
-          'c:searchComp',
-           {
-             "nameToSearch" : 'test'
-            },
-          targetElement,
-          function (cmp){
-           console.log('lightning component created');
-            console.log(cmp);
-          }
-          );
-        },
-         lightningEndpoint// Site endpoint
-      );
 
+  $Lightning.use(
+    appName,
+    function(){
+      $Lightning.createComponent(
+        componentName,
+        {},
+        targetElement,
+        function(cmp){
+          console.log('component created');
+        }
+      );
+    },
+    lightningEndpoint
+  );
 </script>
 </body>
 </html>
