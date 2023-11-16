@@ -13,19 +13,16 @@
 <div id="lightningout"></div>
 <script src="https://oneops-mbm--pocpega.sandbox.my.salesforce-sites.com/cos/lightning/lightning.out.js"></script>
 <script>
-      var eFunction = function(event){
-            console.log(event);
-        var myEventData1 = event.getParam("myEventData1");
-        var myEventData2 = event.getParam("myEventData2");
-        alert('Selected App: ' + myEventData1);
-        alert('Selected Dealer: ' + myEventData2);
-        document.getElementById("content").innerHTML = "Selected App: " + myEventData1 + "<br />Dealer Number: " + myEventData2 +"<br />";
+      this.addEventListener('selected', handleSelected);
+
+      const handleSelected = function(event){
+        const applicationId = event.getParam("applicationId");
+        const dealerNumber = event.getParam("dealerNumber");
+        alert('Selected App: ' + applicationId);
+        alert('Selected Dealer: ' + dealerNumber);
+        document.getElementById("content").innerHTML = "Selected App: " + applicationId + "<br />Dealer Number: " +  +"<br />";
       };
-      var selectedHandler = function(event){
-            console.log('selected event');
-            console.log(event);
-      }
-      this.addEventListener('selected', selectedHandler);
+      
       var x = 'test';
       function getOptions() {
         x = document.getElementById("lname").value;
