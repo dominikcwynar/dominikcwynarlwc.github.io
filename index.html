@@ -14,11 +14,12 @@
 <script src="https://oneops-mbm--pocpega.sandbox.my.salesforce-sites.com/cos/lightning/lightning.out.js"></script>
 <script>
       const handleSelected = function(event){
-        const applicationId = event.getParam("applicationId");
-        const dealerNumber = event.getParam("dealerNumber");
-        alert('Selected App: ' + applicationId);
-        alert('Selected Dealer: ' + dealerNumber);
-        document.getElementById("content").innerHTML = "Selected App: " + applicationId + "<br />Dealer Number: " +  +"<br />";
+            console.log(event);
+        // const applicationId = event.getParam("applicationId");
+        // const dealerNumber = event.getParam("dealerNumber");
+        // alert('Selected App: ' + applicationId);
+        // alert('Selected Dealer: ' + dealerNumber);
+        // document.getElementById("content").innerHTML = "Selected App: " + applicationId + "<br />Dealer Number: " +  +"<br />";
       };
       
       this.addEventListener('selected', handleSelected);
