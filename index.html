@@ -42,7 +42,8 @@
                 }, // attributes to set on the component when created
                 'lightningout', // the DOM location to insert the component
                 function (cmp) {
-                  $A.eventService.addHandler({ "event": "c:MyApplicationEvent", "handler" : eFunction});
+                      console.log('component mounted');
+                  // $A.eventService.addHandler({ "event": "c:MyApplicationEvent", "handler" : eFunction});
                 }
               );
             },
