@@ -10,7 +10,7 @@
 <input type="text" id="lname" name="lname"><br><br>
 <input type="button" onclick="getOptions()" value="Search Credit Apps">
 </form>
-<div id="lightningout" onselected="selectedHandler()" ></div>
+<div id="lightningout"></div>
 <script src="https://oneops-mbm--pocpega.sandbox.my.salesforce-sites.com/cos/lightning/lightning.out.js"></script>
 <script>
       var eFunction = function(event){
@@ -21,9 +21,10 @@
         alert('Selected Dealer: ' + myEventData2);
         document.getElementById("content").innerHTML = "Selected App: " + myEventData1 + "<br />Dealer Number: " + myEventData2 +"<br />";
       };
-      function selectedHandler(event){
+      var selectedHandler = function(event){
             console.log(event);
       }
+      this.addEventListener('selected', selectedHandler);
       var x = 'test';
       function getOptions() {
         x = document.getElementById("lname").value;
@@ -43,7 +44,6 @@
                 }, // attributes to set on the component when created
                 'lightningout', // the DOM location to insert the component
                 function (cmp) {
-                      cmp.addEventListener('c:myApplicationEvent', eFunction);
                   $A.eventService.addHandler({ "event": "c:MyApplicationEvent", "handler" : eFunction});
                 }
               );
