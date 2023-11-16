@@ -11,7 +11,7 @@
 <input type="button" onclick="getOptions()" value="Search Credit Apps">
 </form>
 <div id="lightningout"></div>
-<script src="https://oneops-mbm--pocpega.sandbox.my.salesforce-sites.com/cos/lightning/lightning.out.js"></script>
+<script src="https://oneops-mbm--devdocw.sandbox.my.salesforce-sites.com/cos/lightning/lightning.out.js"></script>
 <script>
       const handleSelected = function(event){
             console.log(event);
@@ -29,23 +29,24 @@
           alert('Please enter a Last Name');
         else {
          document.getElementById("lightningout").innerHTML = "";
+              const applicationName = 'c:FS_ApplicationSearchApp';
+              const componentName = 'c:fs_TabularSearchResults';
+              const targetElement = 'lightningout';
+              const lightningEndpoint = 'https://oneops-mbm--devdocw.sandbox.my.salesforce-sites.com/cos';
               $Lightning.use(
-                  'c:LightningOutDependencyApp', // name of the Lightning app
+                  applicationName, // name of the Lightning app
                   function () {
                     // Callback once framework and app loaded
                    $Lightning.createComponent(
-                      'c:searchComp', // top-level component of your app
+                      componentName, // top-level component of your app
                       {
                         "nameToSearch": x
                       }, // attributes to set on the component when created
-                      'lightningout', // the DOM location to insert the component
-                      function (cmp) {
-                            console.log('component mounted');
-                              // $A.eventService.addHandler({ "event": "c:MyApplicationEvent", "handler" : eFunction});
-                      }
+                      targetElement, // the DOM location to insert the component
+                      function (cmp) {}
                    );
                   },
-                  'https://oneops-mbm--pocpega.sandbox.my.salesforce-sites.com/cos'
+                  lightningEndpoint
               );
         }
        }
