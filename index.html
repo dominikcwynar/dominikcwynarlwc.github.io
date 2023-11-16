@@ -13,8 +13,6 @@
 <div id="lightningout"></div>
 <script src="https://oneops-mbm--pocpega.sandbox.my.salesforce-sites.com/cos/lightning/lightning.out.js"></script>
 <script>
-      this.addEventListener('selected', handleSelected);
-
       const handleSelected = function(event){
         const applicationId = event.getParam("applicationId");
         const dealerNumber = event.getParam("dealerNumber");
@@ -23,34 +21,33 @@
         document.getElementById("content").innerHTML = "Selected App: " + applicationId + "<br />Dealer Number: " +  +"<br />";
       };
       
-      var x = 'test';
+      this.addEventListener('selected', handleSelected);
       function getOptions() {
         x = document.getElementById("lname").value;
-        if(x===null || x==='')
+        if(x === null || x === '')
           alert('Please enter a Last Name');
         else {
-         console.log(x);
          document.getElementById("lightningout").innerHTML = "";
-        $Lightning.use(
-            'c:LightningOutDependencyApp', // name of the Lightning app
-            function () {
-              // Callback once framework and app loaded
-              $Lightning.createComponent(
-                'c:searchComp', // top-level component of your app
-                {
-                 "nameToSearch": x
-                }, // attributes to set on the component when created
-                'lightningout', // the DOM location to insert the component
-                function (cmp) {
-                      console.log('component mounted');
-                  // $A.eventService.addHandler({ "event": "c:MyApplicationEvent", "handler" : eFunction});
-                }
+              $Lightning.use(
+                  'c:LightningOutDependencyApp', // name of the Lightning app
+                  function () {
+                    // Callback once framework and app loaded
+                   $Lightning.createComponent(
+                      'c:searchComp', // top-level component of your app
+                      {
+                        "nameToSearch": x
+                      }, // attributes to set on the component when created
+                      'lightningout', // the DOM location to insert the component
+                      function (cmp) {
+                            console.log('component mounted');
+                              // $A.eventService.addHandler({ "event": "c:MyApplicationEvent", "handler" : eFunction});
+                      }
+                   );
+                  },
+                  'https://oneops-mbm--pocpega.sandbox.my.salesforce-sites.com/cos'
               );
-            },
-            'https://oneops-mbm--pocpega.sandbox.my.salesforce-sites.com/cos'
-          );
         }
-      }
+       }
 </script>
 <div id='content'></div>
 </body>
