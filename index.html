@@ -22,6 +22,7 @@
         document.getElementById("content").innerHTML = "Selected App: " + myEventData1 + "<br />Dealer Number: " + myEventData2 +"<br />";
       };
       var selectedHandler = function(event){
+            console.log('selected event');
             console.log(event);
       }
       this.addEventListener('selected', selectedHandler);
