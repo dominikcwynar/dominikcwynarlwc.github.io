@@ -6,15 +6,16 @@
 </head>
 <body>
 <form>
-<label for="fname">Last name:</label>
-<input type="text" id="lname" name="lname"><br><br>
+<label for="lname">Last name:</label>
+<input type="text" id="lname" name="lname">
+<label for="country">Country:</label>
+<input type="text" id="country" name="country"><br><br>
 <input type="button" onclick="getOptions()" value="Search Credit Apps">
 </form>
 <div id="lightningout"></div>
 <script src="https://oneops-mbm--devdocw.sandbox.my.salesforce-sites.com/cos/lightning/lightning.out.js"></script>
 <script>
       const handleSelected = function(event){
-            console.log(event);
         const applicationId = event.detail.applicationId;
         const dealerNumber = event.detail.dealerNumber;
         alert('Selected App: ' + applicationId);
@@ -24,8 +25,9 @@
       
       this.addEventListener('selected', handleSelected);
       function getOptions() {
-        x = document.getElementById("lname").value;
-        if(x === null || x === '')
+      lastName = document.getElementById("lname").value;
+      country = document.getElementById("country").value;
+        if(lastName === null || lastName === '')
           alert('Please enter a Last Name');
         else {
          document.getElementById("lightningout").innerHTML = "";
@@ -40,7 +42,8 @@
                    $Lightning.createComponent(
                       componentName, // top-level component of your app
                       {
-                        "nameToSearch": x
+                        "nameToSearch": lastName
+                        "country": country
                       }, // attributes to set on the component when created
                       targetElement, // the DOM location to insert the component
                       function (cmp) {}
