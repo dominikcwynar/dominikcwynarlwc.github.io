@@ -16,6 +16,8 @@
 <script src="https://oneops-mbm--devdocw.sandbox.my.salesforce-sites.com/cos/lightning/lightning.out.js"></script>
 <script>
       const handleSelected = function(event){
+            console.log(event);
+            console.log(event.detail);
         const applicationId = event.detail.applicationId;
         const dealerNumber = event.detail.dealerNumber;
         alert('Selected App: ' + applicationId);
