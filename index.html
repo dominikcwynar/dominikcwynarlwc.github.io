@@ -17,12 +17,7 @@
 <script>
       const handleSelected = function(event){
             console.log(event);
-            console.log(event.detail);
-        const applicationId = event.detail.applicationId;
-        const dealerNumber = event.detail.dealerNumber;
-        alert('Selected App: ' + applicationId);
-        alert('Selected Dealer: ' + dealerNumber);
-        document.getElementById("content").innerHTML = "Selected App: " + applicationId + "<br />Dealer Number: " +  +"<br />";
+            
       };
       
       this.addEventListener('selected', handleSelected);
