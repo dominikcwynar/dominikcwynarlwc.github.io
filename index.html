@@ -9,7 +9,9 @@
 <label for="lname">Last name:</label>
 <input type="text" id="lname" name="lname">
 <label for="country">Country:</label>
-<input type="text" id="country" name="country"><br><br>
+<input type="text" id="country" name="country">
+<label for="token">Access token:</label>
+<input type="text" id="token" name="token"><br><br>
 <input type="button" onclick="getOptions()" value="Search Credit Apps">
 </form>
 <div id="lightningout"></div>
@@ -36,6 +38,7 @@
               const componentName = 'c:fs_ApplicationSearchResults';
               const targetElement = 'lightningout';
               const lightningEndpoint = 'https://oneops-mbm--devdocw.sandbox.my.salesforce-sites.com/cos';
+              const accessToken = document.getElementById("token").value;
               $Lightning.use(
                   applicationName, // name of the Lightning app
                   function () {
@@ -50,7 +53,8 @@
                       function (cmp) {}
                    );
                   },
-                  lightningEndpoint
+                  lightningEndpoint,
+                  accessToken
               );
         }
        }
