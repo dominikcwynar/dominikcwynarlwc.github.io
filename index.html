@@ -14,9 +14,36 @@
 <input type="text" id="token" name="token"><br><br>
 <input type="button" onclick="getOptions()" value="Search Credit Apps">
 </form>
+<form>
+<label for="cid">Client ID:</label>
+<input type="text" id="cid" name="cid"><br><br>
+<label for="cs">Client Secret:</label>
+<input type="text" id="cs" name="cs"><br><br>
+<label for="username">dominik.cwynar@oneops-mbm.com.devdocw:</label>
+<input type="text" id="username" name="username" default="dominik.cwynar@oneops-mbm.com.devdocw"><br><br>
+<label for="pw">password:</label>
+<input type="text" id="pw" name="pw"><br><br>
+<input type="button" onclick="getToken()" value="Get Token">
+</form>
 <div id="lightningout"></div>
 <script src="https://oneops-mbm--devdocw.sandbox.my.salesforce-sites.com/cos/lightning/lightning.out.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
+      function getToken(){
+            const clientId = document.getElementById("cid").value;
+            const clientSecret = document.getElementById("cs").value;
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+            
+            var form = new FormData();
+            form.append("grant_type", "password");
+            form.append("client_id", clientId);
+            form.append("client_secret", clientSecret);
+            form.append("username", username);
+            form.append("password", password);
+            console.log('form', form);
+      }
+      
       const handleSelected = function(event){
         const applicationId = event.detail.applicationId;
         const dealerNumber = event.detail.dealerNumber;
