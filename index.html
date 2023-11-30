@@ -70,7 +70,7 @@
               const componentName = 'c:fs_ApplicationSearchResults';
               const targetElement = 'lightningout';
               const lightningEndpoint = 'https://oneops-mbm--devdocw.sandbox.my.salesforce-sites.com/cos';
-              const accessToken = 'Bearer ' + document.getElementById("token").value;
+              const accessToken = document.getElementById("token").value;
               console.log('accessToken', accessToken);
               $Lightning.use(
                   applicationName, // name of the Lightning app
