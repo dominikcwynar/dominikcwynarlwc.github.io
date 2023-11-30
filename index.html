@@ -26,7 +26,7 @@
 <input type="button" onclick="getToken()" value="Get Token">
 </form>
 <div id="lightningout"></div>
-<script src="https://oneops-mbm--devdocw.sandbox.lightning.force.com/lightning/lightning.out.js"></script>
+<script src="https://oneops-mbm--devdocw.sandbox.my.salesforce-sites.com/cos/lightning/lightning.out.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
       function getToken(){
@@ -69,7 +69,7 @@
               const applicationName = 'c:FS_ApplicationSearchApp';
               const componentName = 'c:fs_ApplicationSearchResults';
               const targetElement = 'lightningout';
-              const lightningEndpoint = 'https://oneops-mbm--devdocw.sandbox.my.site.com/cos';
+              const lightningEndpoint = 'https://oneops-mbm--devdocw.sandbox.my.salesforce-sites.com/cos';
               const accessToken = 'Bearer ' + document.getElementById("token").value;
               console.log('accessToken', accessToken);
               $Lightning.use(
